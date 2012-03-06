@@ -1,0 +1,30 @@
+{
+    "name": "Shard",
+    "description": "A shard module for key/value stores.",
+    "version": "0.1.6",
+    "author": "Francesco Sullo <me@sullof.com>",
+    "contributors": [],    
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sullof/Shard.git"
+    },
+    "keywords": ["shard", "sharding", "redis", "key-value", "database"],
+    "directories": { 
+    	"lib": "./lib", 
+    	"conf": "./conf"
+    },
+    "engines": { "node": ">= 0.4" },
+    "dependencies": {
+        "redis": ">= 0.6.7",
+        "class-js": ">= 0.0.2"
+    },
+    "devDependencies": {
+        "should": ">= 0.5.0"
+    },
+    "licenses": [
+        { 
+            "type": "MIT",
+            "url" : "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ]
+}

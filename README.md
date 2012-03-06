@@ -46,11 +46,11 @@ Today, Jan. 19th 2012, the diff is
 So we have a good starting point.
 Since it is possible that you generate more keys in the same milliseconds, we need more data.
 
-First of all, we identify what shard will host that key with `1595487784 % N` (where N is the number of current nodes).
-After we use a sequence (Shard defines the special key `$equence` in Redis) in order to have a incremental unique number for that shard. 
+First of all, we identify what _virtual shard_ will host that key with `1595487784 % N` (where N is the number of current nodes).
+After we use a sequence (Shard defines the special key `$equence` in Redis) in order to have a incremental unique number for that shard.
 
 Imagine that we have two keys of the same type 01 generated at the same millisecond in a shard of 64 nodes.
-The two keys will be assigned, with `1595487784 % 64` to the node 40.
+The two keys will be assigned, with `1595487784 % 64` to the virtual node 40.
 
 If the sequence value at that time is, for example, 190, the partial first key will be
 
@@ -62,13 +62,16 @@ the second, after incrementing the sequence, will be
 	
 Converting these keys in base 62 we will obtain the final keys `1jyVFw3401` and `1jyVFw3501`.
 
-The advantage of this approach is that since all the keys generated at the same millisecond will go on the same shard and there is the incremental sequence, 
+The advantage of this approach is that since all the keys generated at the same millisecond will go on the same virtual shard and there is the incremental sequence, 
 we can mantain the key well sorted by time (except when the variant is close to multiples of 3844).
+
+But the key won't go on the virtual shard defined using mod operator, it is necessary only to decide what shard's sequence we need to use.
 
 ## Consistent hashing
 
-Shardjs does a first virtual sharding that is necessary to decide what sequence has to be incremented, and a second real sharding using [node-hash-ring](https://github.com/bnoguchi/node-hash-ring) by [Brian Noguchi](https://github.com/bnoguchi). 
+Shardjs, after the first virtual sharding, define the real shard that will host the key using [node-hash-ring](https://github.com/bnoguchi/node-hash-ring) by [Brian Noguchi](https://github.com/bnoguchi). 
 
+The advantage of using consistent hashing is that if you have a database with 20 nodes and you add other 4 nodes, you will move only the 20% of the keys to the new nodes.
 
 ## Usage
 

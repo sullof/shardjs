@@ -161,7 +161,7 @@ To get the decimal string of a key:
 	
 To create a fixed key (for example the special keys in the shard-config file):
 
-	Shard.fixedKey(ktype,fixed_shard,some_variant);
+	Shard.fixedKey(timestamp,variant,keytype,suffix);
 	
 To change the key type, for example to associate a token to a user:
 
@@ -171,7 +171,7 @@ or
 
 	Shard.changeKeyType(user_key,'token');
 	
-Be careful, this requires that you have set a special key for tokens in your shard-config file.
+Be careful, this requires that you have set a special key `token` in your shard-config file.
 
 Other useful method are `.getType` and `.getTime` to have info about the key.
 

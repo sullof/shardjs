@@ -71,7 +71,7 @@ But the key won't go on the virtual shard defined using mod operator, it is nece
 
 Shardjs, after the first virtual sharding, define the real shard that will host the key using [node-hash-ring](https://github.com/bnoguchi/node-hash-ring) by [Brian Noguchi](https://github.com/bnoguchi). 
 
-The advantage of using consistent hashing is that if you have a database with 20 nodes and you add other 4 nodes, you will move only the 20% of the keys to the new nodes.
+The advantage of using consistent hashing is that if you have a database with 20 nodes and you add other 2 nodes, you will move only the 10% of the keys to the new nodes.
 
 ## Usage
 
@@ -84,15 +84,15 @@ Before all, you have to install Class-js and HashRing using
 
     var Shard = require('./lib/shardjs-redis').init(shardjs-config);
 
-This is a sample of shard-config file, using 4 local instances of Redis, with a different weight due, probably, to the available RAM:
+This is a sample of shard-config file, using 4 local instances of Redis, with a different weight (in real cases, this can be due to the available RAM):
 
 	exports.config = {
 			
 		shards: {
 		    '0': ["63700", "127.0.0.1", 1],
 		    '1': ["63700", "127.0.0.2", 2],
-		    '2': ["63701", "127.0.0.1", 1],
-		    '3': ["63701", "127.0.0.2", 4]
+		    '2': ["63700", "127.0.0.3", 1],
+		    '3': ["63800", "127.0.0.4", 4]
 		},
 	
 		options: {
@@ -105,7 +105,11 @@ This is a sample of shard-config file, using 4 local instances of Redis, with a 
 				
 			keyTypes: {
 				index: 0, // multiple hash key
-				sorted: 1 // sorted set key	
+				sorted: 1, // sorted set key
+				user: 2,
+				group: 3,
+				comment: 4,
+				like: 5	
 			},
 		
 			specialKeys: {

@@ -155,10 +155,6 @@ To know where a key is:
 
 	Shard.whereIs(key);
 
-To know on what shard you have to put a key after changing the number of nodes:
-
-	Shard.getShard(key,new_shard_size);
-	
 To get the decimal string of a key:
 
 	Shard.toDecimalString(key);

@@ -25,7 +25,7 @@ the library without caring about backward compatibility.__
 Shard uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
 
 
-The key `2T4QmCrM00` is made up of 3 parts: `2T4QmC` `rM` `03`
+The key `2T4QmCrM03` is made up of 3 parts: `2T4QmC` `rM` `03`
 
 
 `2T4QmC` is the difference between the current timestamp in milliseconds and the starting epoch (by default Jan. 1st 2012). 

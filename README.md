@@ -22,7 +22,7 @@ the library without caring about backward compatibility.__
  
 ## The key format
 
-Shard uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
+Shardjs uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
 
 
 The key `2T4QmCrM03` is made up of 3 parts: `2T4QmC` `rM` `03`
@@ -47,7 +47,7 @@ So we have a good starting point.
 Since it is possible that you generate more keys in the same milliseconds, we need more data.
 
 First of all, we identify what _virtual shard_ will host that key with `1595487784 % N` (where N is the number of current nodes).
-After we use a sequence (Shard defines the special key `$equence` in Redis) in order to have a incremental unique number for that shard.
+After we use a sequence (Shardjs defines the special key `$equence` in Redis) in order to have a incremental unique number for that shard.
 
 Imagine that we have two keys of the same type 01 generated at the same millisecond in a shard of 64 nodes.
 The two keys will be assigned, with `1595487784 % 64` to the virtual node 40.
@@ -135,7 +135,7 @@ To generate a key:
 		do_something(key);
 	});		
 	
-If you don't explicitly declare a key type Shard assumes that you use a default $DEF type, that has the numberic value 3843 (the bigger available).
+If you don't explicitly declare a key type Shardjs assumes that you use a default $DEF type, that has the numberic value 3843 (the bigger available).
 
 The command
 
@@ -154,6 +154,10 @@ So you can apply any redis command. For example, to save the key with a value:
 To know where a key is:
 
 	Shard.whereIs(key);
+	
+To know on what virtual shard a key is (from 0.2.3 -- useful in tests):
+
+	Shard.whereIs(key,true);	
 
 To get the decimal string of a key:
 

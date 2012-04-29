@@ -5,12 +5,7 @@ by [this Instagram article](http://instagram-engineering.tumblr.com/post/1085318
 
 
 ## Alert 
-__Shardjs is at a very Alpha stage, use at your own risk.__
-
-__The version 0.2 is not compatible with previous versions. Till now, I seem that nobody started to use Shardjs so 
-I think that this won't create problems. Please, if you start to use Shardjs in some project, let me now
-so that I will consider smooth transitions in the future. If not, as you can guess, it is better to improve 
-the library without caring about backward compatibility.__
+__Shardjs is at Beta stage, use at your own risk.__
 
 
 ## Features

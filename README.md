@@ -89,6 +89,13 @@ This is a sample of shard-config file, using 4 local instances of Redis, with a 
 		    '2': ["63700", "127.0.0.3", 1],
 		    '3': ["63800", "127.0.0.4", 4]
 		},
+		
+	// you can set a database password if required
+	// it will be automatically used to connecting the database
+		auth: {
+			// userid: 'someuserid',
+			// password: 'somepassword'
+		},
 	
 		options: {
 	

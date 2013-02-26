@@ -127,7 +127,7 @@ This is a sample of shard-config file, using 4 local instances of Redis, with a 
 				search: [6,'sorted']
 			},
 			
-			dictionary: {
+			subKeys: {
 			  name: "n",
 			  city: "c",
 			  password: "p",
@@ -205,7 +205,8 @@ you will save in the database an hash like this
   
 If you have million users, it's simple to understand how much memory you can save.
 
-The only problem could be with performance. In that case you can save the final hash.
+The only problem could be with performance. In that case, you can put the minified subkeys in line.
+
 The .maxify method is good to understand what a result is.
 
 Other useful method are `.getType` and `.getTime` to have info about the key.

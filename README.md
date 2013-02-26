@@ -192,16 +192,16 @@ Redis works in memory and it's good to reduce the memory consuption. If in your 
 this can cause that you need more shards than expected. To help you to do this, you can use a dictionary to
 handle abbreviations. This means that, for example, if you instead of running
 
-  Shard.hset(key,{name:"John",city:"London"})
+	Shard.hset(key,{name:"John",city:"London"})
   
 you run
 
-  Shard.hset(key, Shard.minify({name:"John",city:"London"}))
+	Shard.hset(key, Shard.minify({name:"John",city:"London"}))
   
 you will save in the database an hash like this
 
-  n: John
-  c: London
+	n: John
+	c: London
   
 If you have million users, it's simple to understand how much memory you can save.
 

@@ -125,6 +125,15 @@ This is a sample of shard-config file, using 4 local instances of Redis, with a 
 				comments: [4,'index'],
 				likes: [5,'index'],
 				search: [6,'sorted']
+			},
+			
+			dictionary: {
+			  name: "n",
+			  city: "c",
+			  password: "p",
+			  userid: "u",
+			  email: "e"
+			  //...
 			}
 		}
 	};
@@ -178,6 +187,26 @@ or
 	Shard.changeKeyType(user_key,'token');
 	
 Be careful, this requires that you have set a special key `token` in your shard-config file.
+
+Redis works in memory and it's good to reduce the memory consuption. If in your hashes you have long subkeys, 
+this can cause that you need more shards than expected. To help you to do this, you can use a dictionary to
+handle abbreviations. This means that, for example, if you instead of running
+
+  Shard.hset(key,{name:"John",city:"London"})
+  
+you run
+
+  Shard.hset(key, Shard.minify({name:"John",city:"London"}))
+  
+you will save in the database an hash like this
+
+  n: John
+  c: London
+  
+If you have million users, it's simple to understand how much memory you can save.
+
+The only problem could be with performance. In that case you can save the final hash.
+The .maxify method is good to understand what a result is.
 
 Other useful method are `.getType` and `.getTime` to have info about the key.
 

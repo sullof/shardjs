@@ -54,7 +54,8 @@ the second, after incrementing the sequence, will be
 Converting these keys in base 62 we will obtain the final keys `1jyVFw3401` and `1jyVFw3501`.
 
 The advantage of this approach is that since all the keys generated at the same millisecond will go on the same virtual shard and there is the incremental sequence, 
-we can mantain the key well sorted by time (except when the variant is close to multiples of 3844).
+we can mantain the key well sorted by time. There is an exception when the variant is close to multiples of 3844 and we are in the same millisecond. For this reason, 
+even if it is probably very rare, Shardjs doesn't guarantee in-order delivery.
 
 But the key won't go on the virtual shard defined using mod operator, it is necessary only to decide what shard's sequence we need to use.
 

@@ -39,6 +39,11 @@ exports.config = {
 			usernames: [1,'index'],
 			emails: [2,'index'],
 			finder: [3,'sorted']
+		},
+		
+		subKeys: {
+			n: "name",
+			c: "city"
 		}
 	}
 };

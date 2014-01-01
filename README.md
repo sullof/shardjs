@@ -4,10 +4,6 @@ A module to manage keys along a shard of up to 3844 nodes inspired
 by [this Instagram article](http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram).
 
 
-## Alert 
-__Shardjs is at Beta stage, use at your own risk.__
-
-
 ## Features
 
  * fixed/special keys

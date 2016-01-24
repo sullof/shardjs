@@ -3,6 +3,8 @@
 A module to manage keys along a shard of up to 3844 nodes inspired 
 by [this Instagram article](http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram).
 
+__BE CAREFUL. THIS MODULE IS NO MORE SUPPORTED.
+If you are looking at a unique id generator, take a look at [Unicum](https://github.com/hooq/unicum).__
 
 ## Features
 

@@ -1,5 +1,8 @@
 ## Shardjs
 
+THIS DOES NOT WORK ANYMORE. DON'T USE IT :-)
+
+
 A module to manage keys along a shard of up to 3844 nodes inspired 
 by [this Instagram article](http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram).
 
@@ -220,13 +223,13 @@ Shardjs depends on:
 			
 ## Credits
 
-Shardjs is (c) Francesco Sullo <me@sullof.com>
+Shardjs is (c) Francesco Sullo <sullof@gmail.com>
 
 ## License 
 
 (The MIT License)
 
-Copyright (c) 2012 Francesco Sullo <me@sullof.com>
+Copyright (c) 2012 Francesco Sullo <sullof@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
